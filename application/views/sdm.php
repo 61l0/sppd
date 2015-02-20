@@ -132,7 +132,7 @@
 		function operateFormatter(value, row, index) {
         return [
             '<a class="btn btn-primary edit" style="font-size:12px;padding-top:3px;padding-bottom:3px;" href="javascript:void(0)" title="Edit">&nbsp;',
-                '<i class="fa fa-pencil-square-o"></i>',
+                '<i class="fa fa-eye"></i>',
             '&nbsp;</a>'
         ].join('');
     }

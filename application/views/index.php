@@ -5,9 +5,40 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 	
-	<link rel="stylesheet" href="<?php echo base_url();?>assets/jqueryui/jquery-ui.css">
+	  <link rel="stylesheet" href="<?php echo base_url();?>assets/jqueryui/jquery-ui.css">
   	<script src="<?php echo base_url();?>assets/jqueryui/external/jquery/jquery.js"></script>
-  	<script src="<?php echo base_url();?>assets/jqueryui/jquery-ui.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    (function($){$("html").removeClass("v2");
+      $("#header").ready(function(){
+      $("#progress-bar").stop().animate({ width: "25%" },1500) });
+      $("#footer").ready(function(){
+      $("#progress-bar").stop().animate({ width: "75%" },1500) });
+      $(window).load(function(){
+      $("#progress-bar").stop().animate({ width: "100%" },600,function(){
+      $("#loading").fadeOut("fast",function(){
+      $(this).remove();
+      });
+      });
+      });
+      })(jQuery);
+    </script>
+    <style type="text/css" media="all">
+ 
+      #progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      background-color:#428bca;
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+      filter: alpha(opacity=80);
+      opacity: 0.8;
+      width: 0;
+      height: 4px;
+    }
+</style>
+    <script src="<?php echo base_url();?>assets/jqueryui/jquery-ui.js"></script>
     <script src="<?php echo base_url();?>assets/jqueryui/jquery.ui.datepicker-id.js"></script>
 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/bootstrap.min.css" />
@@ -164,6 +195,7 @@
 </head>
 
 <body>
+<div id='loading'><div id='progress-bar'></div><div id='loader'></div></div>
 <nav class="navbar navbar-inverse navbar-fixed-top"  role="navigation">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->

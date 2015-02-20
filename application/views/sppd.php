@@ -19,12 +19,15 @@
     <table id="table-sppd"></table>
 
 	<?php echo $del_confirm_surat.$modal_view_surat; ?>
-	<div id="box"></div>
+	
+
 	<script type="text/javascript">
-            $("#load-surat").hide();		
 		    window.operateEvents = {
 		        'click .print': function (e, value, row, index) {
 		        	//alert(row.no_surat);
+                    
+                    
+                    $('#loader-modal-surat').show();
 		           	$('#konten-modal').empty();
 		            $.ajax({
                         url: "<?php echo base_url(); ?>surat/view/sppd/"+row.no_surat,
@@ -34,18 +37,25 @@
                                 backdrop: 'static',
                                 keyboard: false
                             });                            
-                            $("#loader-surat1").show();
+                           
+
                             //$("#konten-modal").html('Memuat surat...');
                         },
                         success: function(data) {
                             
                             $("#konten-modal").html(data);
-                            $("#loader-surat1").hide();
+                            $('#iframe').load(function() {
+                                //alert("sesdss");
+                                $('#loader-modal-surat').hide("slow");
+                            });
                             //$("#load-surat").empty();
                         },
                         error: function(){
                             $("#konten-modal").html('Gagal memuat surat, cek koneksi ...'); 
-                            $("#loader-surat1").hide();                       
+                             $('#iframe').load(function() {
+                                //alert("sesdss");
+                                $('#loader-modal-surat').hide("slow");
+                            });                       
                         }
                     });             
 		        },
@@ -177,6 +187,7 @@
             '</a>'
         ].join('');
     }
+    
    	$(function () {
         $("#loader-btnsimpansuratbaru").hide();
 	    $('#btnDeleteYes').click(function () {	    	
@@ -217,4 +228,5 @@
 	});
 
 });
+$(".print").loadingbar();
 </script>

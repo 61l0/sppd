@@ -24,6 +24,7 @@
 		        'click .print': function (e, value, row, index) {
 		        	//alert(row.no_surat);
 		           	$('#konten-modal').empty();
+                     $('#loader-modal-surat').show();
 		            $.ajax({
                         url: "<?php echo base_url(); ?>admin/surat/view/"+row.no_surat,
                         timeout: 5000,
@@ -32,18 +33,23 @@
                                 backdrop: 'static',
                                 keyboard: false
                             });                            
-                            $("#loader-surat1").show();
+                            //$("#loader-mpdal-surat").show();
                             //$("#konten-modal").html('Memuat surat...');
                         },
                         success: function(data) {
                             
                             $("#konten-modal").html(data);
-                            $("#loader-surat1").hide();
-                            //$("#load-surat").empty();
+                            $('#iframe').load(function() {
+                                //alert("sesdss");
+                                $('#loader-modal-surat').hide("slow");
+                            });
                         },
                         error: function(){
                             $("#konten-modal").html('Gagal memuat surat, cek koneksi ...'); 
-                            $("#loader-surat1").hide();                       
+                            $('#iframe').load(function() {
+                                //alert("sesdss");
+                                $('#loader-modal-surat').hide("slow");
+                            });                     
                         }
                     });             
 		        },

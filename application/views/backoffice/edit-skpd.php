@@ -8,10 +8,16 @@
       	<div class="modal-body">
 
             <form class="form-horizontal" role="form" id="form-tambah-sdm">
+                  <div class="form-group hidden">
+                       
+                        <div class="col-sm-8">
+                          <input type="text" id="update-idskpd" class="form-control"/>  
+                        </div>            
+                  </div>
                   <div class="form-group">
                         <label class="col-sm-3 control-label" for="input-kodeskpd">Kode SKPD</label>
                         <div class="col-sm-8">
-                          <input type="text" id="update-kodeskpd" class="form-control" disabled=""/>  
+                          <input type="text" id="update-kodeskpd" class="form-control"/>  
                         </div>            
                   </div>
                   <div class="form-group">
@@ -62,6 +68,7 @@
   
   $("body").on("click","#btn-update-skpd",function(){
     //alert('click');
+          var idskpd = $("#update-idskpd").val();
           var kode_skpd = $("#update-kodeskpd").val();
           var nama_skpd = $("#update-namaskpd").val();
           var alamat_skpd = $("#update-alamatskpd").val();
@@ -71,7 +78,7 @@
           $.ajax({      
             url:"<?php echo base_url(); ?>admin/skpd/update",
             type:"POST",//jenis menghandle tipe pegawai kontrak atau pns
-            data:{'par_kodeskpd':kode_skpd,'par_namaskpd':nama_skpd,'par_alamatskpd':alamat_skpd,'par_emailskpd':email_skpd,'par_telpskpd':telp_skpd,'par_websiteskpd':website_skpd,},
+            data:{'par_idskpd':idskpd,'par_kodeskpd':kode_skpd,'par_namaskpd':nama_skpd,'par_alamatskpd':alamat_skpd,'par_emailskpd':email_skpd,'par_telpskpd':telp_skpd,'par_websiteskpd':website_skpd,},
             beforeSend: function(rs){
               $("#loader-btnsdm").show();
               $("#btn-update-skpd").addClass("disabled");

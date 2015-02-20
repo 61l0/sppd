@@ -208,13 +208,14 @@ INSERT INTO `tbl_sdm` (`kd_sdm`, `nip`, `nama`, `kd_jabatan`, `kd_pg`, `kode_skp
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_skpd` (
+  `id_skpd` int(7) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `kode_skpd` varchar(7) NOT NULL,
   `nama_skpd` varchar(50) NOT NULL,
   `alamat_skpd` varchar(100) NOT NULL DEFAULT '-',
   `telepon_skpd` varchar(30) NOT NULL DEFAULT '-',
   `email_skpd` varchar(50) NOT NULL DEFAULT '-',
   `website_skpd` varchar(50) NOT NULL DEFAULT '-'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 ;
 
 --
 -- Dumping data for table `tbl_skpd`
@@ -374,9 +375,17 @@ ALTER TABLE `tbl_sdm`
 --
 -- Indexes for table `tbl_skpd`
 --
-ALTER TABLE `tbl_skpd`
- ADD PRIMARY KEY (`kode_skpd`);
 
+ALTER TABLE `tbl_skpd`
+  ADD UNIQUE KEY `kode_skpd` (`kode_skpd`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tbl_skpd`
+--
 --
 -- Indexes for table `tbl_sppd`
 --

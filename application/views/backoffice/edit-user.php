@@ -11,7 +11,7 @@
                   <div class="form-group">
                         <label class="col-sm-3 control-label" for="update-username">Username</label>
                         <div class="col-sm-8">
-                          <input type="text" id="update-username" class="form-control" disabled=""/>  
+                          <input type="text" id="update-username" class="form-control"/>  
                         </div>            
                   </div>
                   <div class="form-group">

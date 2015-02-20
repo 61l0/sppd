@@ -58,9 +58,30 @@ class Model_sdm extends CI_Model {
 			return 0;
 		}
 	}
+
+	public function update_jabatan($data,$id)
+	{
+		//$this->db->where('id', $id);
+		$query=$this->db->update('tbl_jabatan', $data,"kd_jabatan = '$id'"); 	
+		if ($query) {
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+
 	public function delete($oid)
 	{
 		$query=$this->db->delete('tbl_sdm',$oid);
+		if ($query) {
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+	public function delete_jabatan($oid)
+	{
+		$query=$this->db->delete('tbl_jabatan',$oid);
 		if ($query) {
 			return 1;
 		}else{

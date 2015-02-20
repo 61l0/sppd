@@ -5,7 +5,8 @@ class Skpd extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    if($session == FALSE)
+    $session = $this->session->userdata('isLogin');
+        if($session == FALSE)
         {
           redirect('admin/login');
         }
@@ -61,6 +62,7 @@ class Skpd extends CI_Controller
     if($data!=null){
       foreach ($data as $key) {
         $dataa[]=array(
+        'id_skpd' =>$key['id_skpd'],
         'kode_skpd'=>$key['kode_skpd'],
         'nama_skpd'=>$key['nama_skpd'],
         'alamat_skpd'=>$key['alamat_skpd'],
@@ -101,7 +103,8 @@ class Skpd extends CI_Controller
 
   public function update($value='')
   {
-    $data=array(          
+    $data=array(   
+      'kode_skpd' => $_POST['par_kodeskpd'],      
       'nama_skpd' => $_POST['par_namaskpd'],
       'telepon_skpd' => $_POST['par_telpskpd'],
       'alamat_skpd' => $_POST['par_alamatskpd'],
@@ -110,7 +113,7 @@ class Skpd extends CI_Controller
     );
     //print_r($data);
 
-    $respon=$this->model_skpd->update($data,$_POST['par_kodeskpd']);
+    $respon=$this->model_skpd->update($data,$_POST['par_idskpd']);
     echo $respon;
   }
 

@@ -12,7 +12,8 @@ class User extends CI_Controller
     $this->load->library(array('form_validation','session'));
     $this->load->database();
     $this->load->helper('url');
-    if($session == FALSE)
+    $session = $this->session->userdata('isLogin');
+        if($session == FALSE)
         {
           redirect('admin/login');
         }

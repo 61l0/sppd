@@ -3,7 +3,7 @@
     <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title" id="myModalLabel">Edit data user</h4>
+          <h4 class="modal-title" id="myModalLabel">Edit data pegawai</h4>
           </div>
         <div class="modal-body">
             <form class="form-horizontal" role="form" id="form-edit-sdm">
@@ -77,7 +77,7 @@
                        <form class="form-horizontal" role="form" id="form-edit-tambah-jabatan">
                         <div class="control-group">
                           <label>Jabatan Baru</label>
-                          <input type="text" class="form-control" id="edit-jabatan" />
+                          <input type="text" class="form-control" id="add-jabatan" />
                         </div> 
                        </form>
                     </div>
@@ -90,6 +90,7 @@
             </div>
 
 <script type="text/javascript">
+  $('#loader-btneditaddjabatan').hide();
   $('body').on('click','#btn-update-user',function(){
     var u_kd_sdm = $('#edit-kdsdm').val();
     var u_nip = $('#edit-nip').val();
@@ -124,5 +125,53 @@
         }
     });    
   });
-
+  $('body').on('click','#btn-edit-simpan-jabatan',function(){
+    var jabatan = $('#add-jabatan').val();
+    //alert("sdssss"+jabatan);
+    $.ajax({
+      type:"POST",
+      url:'<?php echo base_url(); ?>admin/sdm/insert_jabatan',
+      data: {'par_jabatan':jabatan},
+      success:function(rs) {
+        if(rs==1){            
+            new PNotify({
+              title: '',
+              text: 'Berhasil menambah jabatan.',
+              type: 'success',
+              shadow: false
+            });
+          $('#modal-edit-jabatan').modal('hide');
+          select_edit_jabatan.clearOptions();
+            select_edit_jabatan.load(function(callback) {
+                xhr1 && xhr1.abort();
+                xhr = $.ajax({
+                 url:"<?php echo base_url(); ?>admin/sdm/get_jabatan",
+                // url:"localhost/pkl4/jsonjabatan.php",
+                  //data:{'par_input':'getJabatan'},
+                  //:"POST",
+                  dataType:"json",
+                  success: function(results) {
+                        //alert(results);
+                      callback(results);
+                      //alert(kode_jabatan);
+                      select_edit_jabatan.setValue(val_kdjabatan);      
+                },
+                  error: function(rs) {
+                      //alert(rs);
+                      callback();
+                  }
+                });
+            });  
+        }
+      },
+      error:function(){
+            new PNotify({
+                  title: '',
+                  text: 'Gagal menambah jabatan.',
+                  type: 'error',
+                  shadow: false
+            });
+        }
+    });    
+  });
 </script>

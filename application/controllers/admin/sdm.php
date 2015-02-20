@@ -23,6 +23,41 @@ class Sdm extends CI_Controller {
         );        
 	    $data =array('content' => $this->load->view('backoffice/sdm',$data,true) , );  
 	    $this->load->view('backoffice/index',$data);
+	}
+
+	public function jabatan($value='')
+	{
+		$jabatan = $data = $this->model_sdm->get_jabatan(" ");
+		$data = array('del_confirm_skpd'=>$this->load->view('backoffice/modal_confirm_del_jabatan',array(),true) ,
+		          'tambah_skpd'=>$this->load->view('backoffice/tambah-jabatan',array(),true),
+		          'edit_skpd'=>$this->load->view('backoffice/edit-jabatan',array('pangkat'=>$jabatan),true),
+		          'title_content'=>'List Jabatan',
+		        );		        
+		    $data =array('content' => $this->load->view('backoffice/jabatan',$data,true) , );   
+		    $this->load->view('backoffice/index',$data);
+	}
+
+	public function pangkat_golongan($value='')
+		{
+			$pangkat=$this->model_sdm->get_pangkat(" where kd_pg >1");
+
+			$data = array('del_confirm_skpd'=>$this->load->view('backoffice/modal_confirm_del_skpd',array(),true) ,
+		          'tambah_skpd'=>$this->load->view('backoffice/tambah-pangkat',array(),true),
+		          'edit_skpd'=>$this->load->view('backoffice/edit-pangkat',array('pangkat'=>$pangkat),true),
+		          'title_content'=>'List Satuan Kerja Perangkat Daerah',
+		        );
+		        
+		    $data =array('content' => $this->load->view('backoffice/pangkat-gol',$data,true) , );   
+		    $this->load->view('backoffice/index',$data);
+		}
+	public function get_pangkat($kode=""){
+	if($kode==""){
+		$pangkat=$this->model_sdm->get_pangkat(" where kd_pg >1");
+		echo json_encode($pangkat);
+	}else{
+		$pangkat=$this->model_sdm->get_pangkat(" where kd_pg = '$kode'");
+		echo json_encode($pangkat);
+	}
 	}	
 	public function get_ttd($jabatan,$kode_skpd=""){
 		$jabatan = str_replace('%20',' ',$jabatan);
@@ -94,11 +129,16 @@ class Sdm extends CI_Controller {
 		}
 	}
 	
-	public function get_jabatan()
+	public function get_jabatan($value="")
 	{
 		//$data = $this->model_sdm->get_jabatan(" where nama_jabatan NOT LIKE '%asisten%'");
-		$data = $this->model_sdm->get_jabatan(" ");
-		echo json_encode($data);
+		if ($value!="") {
+			$data = $this->model_sdm->get_jabatan(" where kd_jabatan = '$value'");
+			echo(json_encode($data));
+		}else{
+			$data = $this->model_sdm->get_jabatan(" ");
+			echo json_encode($data);
+		}
 	}
 	
 	public function baru()
@@ -148,12 +188,27 @@ class Sdm extends CI_Controller {
 		echo $respon;		
 	}
 	
+	public function update_jabatan($value='')
+	{
+		//POST 
+		$data_update = array(				
+				'nama_jabatan' => $_POST['par_namajabatan'],					
+		);
+		$respon=$this->model_sdm->update_jabatan($data_update,$_POST['par_kdjabatan']);
+		echo $respon;		
+	}
+
 	public function delete($kd_sdm='')
 	{		
 		$respon=$this->model_sdm->delete(array('kd_sdm' => $kd_sdm));
 		echo $respon;
 	}
 
+	public function del_jabatan($value='')
+	{		
+		$respon=$this->model_sdm->delete_jabatan(array('kd_jabatan' => $_POST['par_kdjabatan']));
+		echo $respon;
+	}
 	public function insert_jabatan($value='')
 	{
 		$jab = $_POST['par_jabatan'];

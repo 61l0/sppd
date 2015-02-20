@@ -85,7 +85,7 @@
 }
 window.operateEvents = {
         'click .edit': function (e, value, row, index) {
-          alert(row.kd_sdm);
+          //alert(row.kd_sdm);
             var val_skpd;            
             $.ajax({
                 type:"POST",

@@ -36,7 +36,7 @@ class Model_skpd extends CI_Model {
 	public function update($data,$kode)
 	{
 		//$this->db->where('id', $id);
-		$query=$this->db->update('tbl_skpd', $data,"kode_skpd = '$kode'"); 	
+		$query=$this->db->update('tbl_skpd', $data,"id_skpd = '$kode'"); 	
 		if ($query) {
 			return 1;
 		}else{

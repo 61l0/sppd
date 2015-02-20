@@ -11,13 +11,13 @@
                   <div class="form-group">
                         <label class="col-sm-3 control-label" for="input-kodeskpd">Kode SKPD</label>
                         <div class="col-sm-8">
-                          <input type="text" id="input-kodeskpd" class="form-control"/>  
+                          <input placeholder="421.XXX" type="text" id="input-kodeskpd" class="form-control"/>  
                         </div>            
                   </div>
                   <div class="form-group">
                         <label class="col-sm-3 control-label" for="input-namaskpd">Nama SKPD</label>
                         <div class="col-sm-8">
-                          <input type="text" id="input-namaskpd" class="form-control"/>  
+                          <input placeholder="Nama lengkap skpd" type="text" id="input-namaskpd" class="form-control"/>  
                         </div>            
                   </div>
                   <div class="form-group">
@@ -41,7 +41,7 @@
                   <div class="form-group">
                         <label class="col-sm-3 control-label" for="input-websiteskpd">Website SKPD</label>
                         <div class="col-sm-8">
-                          <input type="text" id="input-websiteskpd" class="form-control"/>  
+                          <input placeholder="ex: http://skpd.com/" type="text" id="input-websiteskpd" class="form-control"/>  
                         </div>            
                   </div>
                         

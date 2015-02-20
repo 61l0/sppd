@@ -4,26 +4,26 @@
     <div class="modal-content">
       	<div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Tambah data SKPD</h4>
+	        <h4 class="modal-title" id="myModalLabel">Tambah data user</h4>
 	      	</div>
       	<div class="modal-body">            
             <form class="form-horizontal" role="form" id="form-tambah-sdm">
                   <div class="form-group">
                         <label class="col-sm-3 control-label" for="input-username">Username</label>
                         <div class="col-sm-8">
-                          <input type="text" id="input-username" class="form-control"/>  
+                          <input type="text" id="input-username" class="form-control" placeholder="Silahkan isi.."/>  
                         </div>            
                   </div>
                   <div class="form-group">
                         <label class="col-sm-3 control-label" for="input-passworduser">Password</label>
                         <div class="col-sm-8">
-                          <input type="text" id="input-passworduser" class="form-control"/>  
+                          <input type="text" id="input-passworduser" class="form-control" placeholder="Silahkan isi.."/>  
                         </div>            
                   </div>
                   <div class="form-group">
                         <label class="col-sm-3 control-label" for="input-skpduser">SKPD</label>
                         <div class="col-sm-8">
-                          <select id="input-skpduser" class="form-control">
+                          <select id="input-skpduser" class="form-control" placeholder="Pilih SKPD..">
                             <option value="0">-</option>
                           </select>
                         </div>            

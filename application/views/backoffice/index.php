@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -45,6 +44,36 @@
     
     <script src="<?php echo base_url();?>assets/jqueryui/external/jquery/jquery.js"></script>
 
+    <script type="text/javascript">
+    (function($){$("html").removeClass("v2");
+      $("#header").ready(function(){
+      $("#progress-bar").stop().animate({ width: "25%" },1500) });
+      $("#footer").ready(function(){
+      $("#progress-bar").stop().animate({ width: "75%" },1500) });
+      $(window).load(function(){
+      $("#progress-bar").stop().animate({ width: "100%" },600,function(){
+      $("#loading").fadeOut("fast",function(){
+      $(this).remove();
+      });
+      });
+      });
+      })(jQuery);
+    </script>
+    <style type="text/css" media="all">
+ 
+      #progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      background-color:#428bca;
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+      filter: alpha(opacity=80);
+      opacity: 0.8;
+      width: 0;
+      height: 4px;
+    }
+</style>
     <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
 
@@ -94,12 +123,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><i class="fa fa-slack fa-lg"></i> SPPD & Surat Tugas Admin</a>
+                <a class="navbar-brand" href="<?php echo base_url() ?>admin"><i class="fa fa-slack fa-lg"></i> SPPD & Surat Tugas Admin</a>
             </div>
             <!-- /.navbar-header -->
-
             <ul class="nav navbar-top-links navbar-right">
-                
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -118,14 +145,10 @@
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->
-
-       
-
-
        <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
+                        <!--<li class="sidebar-search">
                             <div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="Search...">
                                 <span class="input-group-btn">
@@ -134,26 +157,35 @@
                                 </button>
                             </span>
                             </div>
-                        </li>
+                        </li>-->
                         <li>
                             <a href="<?php echo base_url(); ?>admin"><i class="fa fa-dashboard fa-fw"></i> Home</a>
                         </li>
-
                         <li>
                             <a href="<?php echo base_url(); ?>admin/surat/sppd"><i class="fa fa-file fa-fw"></i> Surat</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-database fa-fw"></i> Master<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="<?php echo base_url(); ?>admin/user">User</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url(); ?>admin/skpd">SKPD</a>
-                                </li>
+                            <a href="<?php echo base_url(); ?>admin/user"><i class="fa fa-user fa-fw"></i> Users</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo base_url(); ?>admin/skpd"><i class="fa fa-university fa-fw"></i> SKPD</a>
+                        </li>
+
+                        <li id="aaa">
+                            <a href="#"><i class="fa fa-users fa-fw"></i> SDM<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">    
+                                    
                                 <li>
                                     <a href="<?php echo base_url(); ?>admin/sdm">Pegawai</a>
                                 </li>
+                                <li>
+                                    <a href="<?php echo base_url(); ?>admin/sdm/pangkat_golongan">Pangkat & Gol PNS</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url(); ?>admin/sdm/jabatan">Jabatan</a>
+                                </li>
+                                    
+                              
                             </ul>
                         </li>
                         <li>

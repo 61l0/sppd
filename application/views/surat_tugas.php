@@ -21,6 +21,7 @@
             $('#loader-surat1').hide();		
 		    window.operateEvents = {
 		        'click .print': function (e, value, row, index) {
+                    $('#loader-modal-surat').show();
                     $('#konten-modal').empty();
                     $.ajax({
                         url: "<?php echo base_url(); ?>surat/view/surat_tugas/"+row.no_surat,
@@ -30,16 +31,21 @@
                                 backdrop: 'static',
                                 keyboard: false
                             });
-                            $('#loader-surat1').show();
-                            $("#konten-modal").html('Memuat surat...');
                         },
                         success: function(data) {
                             $("#konten-modal").html(data);
-                            $('#loader-surat1').hide();
+                             $('#iframe').load(function() {
+                                //alert("sesdss");
+                                $('#loader-modal-surat').hide("slow");
+                            });
                         },
                         error: function(){
-                            $('#loader-surat1').hide();
-                            $("#konten-modal").html('Gagal memuat surat, cek koneksi ...');                        
+                           
+                            $("#konten-modal").html('Gagal memuat surat, cek koneksi ...'); 
+                             $('#iframe').load(function() {
+                                //alert("sesdss");
+                                $('#loader-modal-surat').hide("slow");
+                            });                       
                         }
                     });                    
                     //$('#konten-modal').load('<?php echo base_url(); ?>surat/view/surat_tugas/'+row.no_surat);

@@ -35,7 +35,7 @@
                         $("#update-telpskpd").val(row.telepon_skpd);
                         $("#update-emailskpd").val(row.email_skpd);
                         $("#update-websiteskpd").val(row.website_skpd);
-                        
+                        $("#update-idskpd").val(row.id_skpd);
                         //$("#pilih-edit-pangkat-gol").val(row.kd_jabatan);
                         //edit_select_jabatan.setValue(row.kode_jabatan);
                         
@@ -94,12 +94,16 @@ $('#table-skpd').bootstrapTable({
                 //cardView: true,
                 showToggle:true,
                 //sidePagination: 'server',
-                onDblClickRow: function (row) {
-                   // alert(row.kode_skpd);
-                    //alert('Event: onDblClickRow, data: ' + JSON.stringify(row));
-                    window.location("<?php echo base_url(); ?>")
-                },
+                
                 columns: [{
+                    
+                    field: 'id_skpd',
+                    title: 'id_skpd',
+                    align: 'left',
+                    valign: 'top',
+                    visible:false,
+                    sortable: true,
+                },{
                     
                     field: 'kode_skpd',
                     title: 'Kode SKPD',

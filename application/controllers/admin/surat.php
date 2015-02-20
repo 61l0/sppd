@@ -339,7 +339,7 @@ class Surat extends CI_Controller {
 				<!-- 16:9 aspect ratio -->
 		<div class=\"embed-responsive embed-responsive-16by9\">
 		  
-		  <iframe class=\"embed-responsive-item\" src=\"".base_url()."surat/cetak/".$no_surat."/".$tipe."\"></iframe>
+		  <iframe id=\"iframe\" class=\"embed-responsive-item\" src=\"".base_url()."admin/surat/cetak/".$no_surat."/".$tipe."\"></iframe>
 		</div>
 		  ";
 		//$modal = array('konten'=>$this->load->view('modal_surat',array(),true) ,);
